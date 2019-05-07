@@ -1,0 +1,21 @@
+{
+    "type": "object",
+    "properties": {
+        "language": {
+            "required": false,
+            "type": "string",
+            "default": "de"
+        },
+        "country": {
+            "required": false,
+            "type": "string"
+        },
+        "fieldsFilter": {
+            "required": false,
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    }
+}

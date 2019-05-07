@@ -1,0 +1,45 @@
+{
+    "type": "object",
+    "properties": {
+        "marketId": {
+            "required": true,
+            "type": "string",
+            "pattern": "^[a-z]{2}_[A-Z]{2}$",
+            "default": "de_DE"
+        },
+        "modelId": {
+            "required": true,
+            "type": "string",
+            "default": "222980_000"
+        },
+        "configurationId": {
+            "required": true,
+            "type": "string",
+            "default": "E-AB5-D09-D14-D53-D71-D80-L06-L19-M69-M70-M88-M94-N63-O16-O92-Q31-Q56-S09-S16_L-040_P-501_S-08U-09U-11R-12U-14U-160-16U-17U-223-231-233-235-23P-249-266-275-276-290-293-297-299-351-360-401-402-413-427-432-436-439-441-443-448-452-453-463-470-471-475-487-503-518-531-538-540-551-581-582-596-61U-628-642-70B-735-808-810-840-871-874-877-881-882-883-889-897-8U0-902-B59-H29-L2B-P07-P09-P17-P21-P34-P35-P47-P54-P64-R66-SZ4-U10-U12-U25"
+        },
+        "componentTypes": {
+            "required": false,
+            "type": "array",
+            "items": {
+                "enum": [
+                    "WHEELS",
+                    "PAINTS",
+                    "UPHOLSTERIES",
+                    "TRIMS",
+                    "PACKAGES",
+                    "LINES",
+                    "SPECIAL_EDITION",
+                    "SPECIAL_EQUIPMENT"
+                ],
+                "type": "string"
+            }
+        },
+        "fieldsFilter": {
+            "required": false,
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    }
+}

@@ -1,0 +1,40 @@
+{
+    "type": "object",
+    "properties": {
+        "marketId": {
+            "required": true,
+            "type": "string",
+            "pattern": "^[a-z]{2}_[A-Z]{2}$",
+            "default": "de_DE"
+        },
+        "classId": {
+            "required": false,
+            "type": "string",
+            "default": "222"
+        },
+        "bodyId": {
+            "required": false,
+            "type": "string",
+            "default": "2"
+        },
+        "productGroups": {
+            "required": false,
+            "type": "array",
+            "items": {
+                "enum": [
+                    "PKW",
+                    "VAN",
+                    "SMART"
+                ],
+                "type": "string"
+            }
+        },
+        "fieldsFilter": {
+            "required": false,
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    }
+}

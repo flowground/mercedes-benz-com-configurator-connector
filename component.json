@@ -1,0 +1,826 @@
+{
+    "title": "Car Configurator",
+    "description": "The Car Configurator API offers access to the Mercedes-Benz car configuration functions. It provides required reference data such as the masterdata of all Mercedes-Benz vehicles as well as functions to retrieve initial and changed configurations. In addition to that is is possible to save a newly created configuration so that it can be easily restored or shared with others.",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/mercedes-benz.com/configurator/1.0/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://api.mercedes-benz.com/configurator_tryout/v1",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "marketsGET": {
+            "main": "./lib/actions/marketsGET.js",
+            "title": "Get all available markets.",
+            "description": "Get all available `Markets`. Optional query params **language** or **country** may be used to filter the result.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/marketsGET.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_swagger_router_controller_markets": {
+            "main": "./lib/actions/x_swagger_router_controller_markets.js",
+            "title": "x_swagger_router_controller_markets",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_swagger_router_controller_markets.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "marketGET": {
+            "main": "./lib/actions/marketGET.js",
+            "title": "Get the market with the given marketId.",
+            "description": "Gets the `Market` for the given **marketId**. There are no query parameters to filter the result.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/marketGET.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_swagger_router_controller_markets__marketId_": {
+            "main": "./lib/actions/x_swagger_router_controller_markets__marketId_.js",
+            "title": "x_swagger_router_controller_markets__marketId_",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_swagger_router_controller_markets__marketId_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "bodiesGET": {
+            "main": "./lib/actions/bodiesGET.js",
+            "title": "Get all available bodies for the given marketId.",
+            "description": "Get all available `VehicleBodies` for the given **marketId**. Optional query params **classId** **bodyId** or **productGroups** may be used to filter the result and must conform to the pattern [0-9A-Z_-]+.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/bodiesGET.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_swagger_router_controller_markets__marketId__bodies": {
+            "main": "./lib/actions/x_swagger_router_controller_markets__marketId__bodies.js",
+            "title": "x_swagger_router_controller_markets__marketId__bodies",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_swagger_router_controller_markets__marketId__bodies.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "bodyGET": {
+            "main": "./lib/actions/bodyGET.js",
+            "title": "Get the body for the given marketId and bodyId.",
+            "description": "Get the `VehicleBody` for the given **marketId** and **bodyId**.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/bodyGET.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_swagger_router_controller_markets__marketId__bodies__bodyId_": {
+            "main": "./lib/actions/x_swagger_router_controller_markets__marketId__bodies__bodyId_.js",
+            "title": "x_swagger_router_controller_markets__marketId__bodies__bodyId_",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_swagger_router_controller_markets__marketId__bodies__bodyId_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "classesGET": {
+            "main": "./lib/actions/classesGET.js",
+            "title": "Get all available classes for the given marketId.",
+            "description": "Get all available `VehicleClasses` objects for the given **marketId**. Optional query params **classId**, **bodyId** or **productGroups** may be used to filter the result and must conform to the pattern [0-9A-Z_-]+.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/classesGET.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_swagger_router_controller_markets__marketId__classes": {
+            "main": "./lib/actions/x_swagger_router_controller_markets__marketId__classes.js",
+            "title": "x_swagger_router_controller_markets__marketId__classes",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_swagger_router_controller_markets__marketId__classes.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "classGET": {
+            "main": "./lib/actions/classGET.js",
+            "title": "Get the class for the given marketId and classId.",
+            "description": "Get the `VehicleClass` for the given **marketId** and **classId**.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/classGET.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_swagger_router_controller_markets__marketId__classes__classId_": {
+            "main": "./lib/actions/x_swagger_router_controller_markets__marketId__classes__classId_.js",
+            "title": "x_swagger_router_controller_markets__marketId__classes__classId_",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_swagger_router_controller_markets__marketId__classes__classId_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "modelsGET": {
+            "main": "./lib/actions/modelsGET.js",
+            "title": "Get all available models for the given marketId.",
+            "description": "Get the available `VehicleModels` for the given **marketId**. Optional query params **classId**, **bodyId**, **baumuster4prefix**, **baumuster**, **nationalSalesType** or **productGroups** maybe used to filter the result. The baumuster4prefix must conform to the pattern [0-9]{4}.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/modelsGET.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_swagger_router_controller_markets__marketId__models": {
+            "main": "./lib/actions/x_swagger_router_controller_markets__marketId__models.js",
+            "title": "x_swagger_router_controller_markets__marketId__models",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_swagger_router_controller_markets__marketId__models.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "modelGET": {
+            "main": "./lib/actions/modelGET.js",
+            "title": "Get the model for the given marketId and modelId.",
+            "description": "Get the `VehicleModel` object for the given **marketId** and **modelId**.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/modelGET.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_swagger_router_controller_markets__marketId__models__modelId_": {
+            "main": "./lib/actions/x_swagger_router_controller_markets__marketId__models__modelId_.js",
+            "title": "x_swagger_router_controller_markets__marketId__models__modelId_",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_swagger_router_controller_markets__marketId__models__modelId_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "modelConfigurationsGET": {
+            "main": "./lib/actions/modelConfigurationsGET.js",
+            "title": "Get the initial configuration for the given marketId and modelId.",
+            "description": "Get the initial `VehicleConfiguration` for the given **marketId** and **modelId**.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/modelConfigurationsGET.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_swagger_router_controller_markets__marketId__models__modelId__configurations_initial": {
+            "main": "./lib/actions/x_swagger_router_controller_markets__marketId__models__modelId__configurations_initial.js",
+            "title": "x_swagger_router_controller_markets__marketId__models__modelId__configurations_initial",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_swagger_router_controller_markets__marketId__models__modelId__configurations_initial.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "modelConfigurationGET": {
+            "main": "./lib/actions/modelConfigurationGET.js",
+            "title": "Get the configuration for the given marketId, modelId and configurationId.",
+            "description": "Get the `VehicleConfiguration` for the given **marketId**, **modelId** and **configurationId**.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/modelConfigurationGET.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId_": {
+            "main": "./lib/actions/x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId_.js",
+            "title": "x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId_",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "modelConfigurationAlternativesGET": {
+            "main": "./lib/actions/modelConfigurationAlternativesGET.js",
+            "title": "Get the alternatives for the given marketId, modelId, configurationId and componentList.",
+            "description": "Get the `VehicleAlternatives` for the given **marketId**, **modelId** and **configurationId** and the given **componentList** of changes.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/modelConfigurationAlternativesGET.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__alternatives__componentList_": {
+            "main": "./lib/actions/x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__alt.js",
+            "title": "x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__alternatives__componentList_",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__alt.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "imageComponentsGET": {
+            "main": "./lib/actions/imageComponentsGET.js",
+            "title": "Returns URLs pointing to images in JPG format in the highest available resolution (depending on the component) of the vehicle's:\n  * engine (1024x576 px),\n  * rim (710x710 px),\n  * trim (800x600 px),\n  * paints (800x600 px),\n  * upholstery (800x600 px) and\n  * equipments (740x416 px).",
+            "description": "Returns URLs pointing to images in JPG format in the highest available resolution (depending on the component) of the vehicle's:\n  * engine (1024x576 px),\n  * rim (710x710 px),\n  * trim (800x600 px),\n  * paints (800x600 px),\n  * upholstery (800x600 px) and\n  * equipments (740x416 px).",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/imageComponentsGET.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__images_components": {
+            "main": "./lib/actions/x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__ima.js",
+            "title": "x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__images_components",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__ima.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "imageComponentsEngineGET": {
+            "main": "./lib/actions/imageComponentsEngineGET.js",
+            "title": "Returns a URL pointing to an image of the vehicles engine.  These images are available in the resolution 1024x576 px.",
+            "description": "Returns a URL pointing to an image of the vehicles engine.  These images are available in the resolution 1024x576 px.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/imageComponentsEngineGET.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__images_components_engine": {
+            "main": "./lib/actions/x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__ima.js",
+            "title": "x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__images_components_engine",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__ima.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "imageComponentsEquipmentsGET": {
+            "main": "./lib/actions/imageComponentsEquipmentsGET.js",
+            "title": "Returns URLs pointing to images of this vehicle's equipments. The images are available in the highest possible resolution (usually 740x416 px).",
+            "description": "Returns URLs pointing to images of this vehicle's equipments. The images are available in the highest possible resolution (usually 740x416 px).",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/imageComponentsEquipmentsGET.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__images_components_equipments": {
+            "main": "./lib/actions/x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__ima.js",
+            "title": "x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__images_components_equipments",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__ima.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "imageComponentsEquipmentsByCodeGET": {
+            "main": "./lib/actions/imageComponentsEquipmentsByCodeGET.js",
+            "title": "Returns URLs pointing to images of this vehicle's equipments. The images are available in the highest possible resolution (usually 740x416 px).",
+            "description": "Returns URLs pointing to images of this vehicle's equipments. The images are available in the highest possible resolution (usually 740x416 px).",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/imageComponentsEquipmentsByCodeGET.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__images_components_equipments__componentCode_": {
+            "main": "./lib/actions/x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__ima.js",
+            "title": "x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__images_components_equipments__componentCode_",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__ima.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "imageComponentsPaintGET": {
+            "main": "./lib/actions/imageComponentsPaintGET.js",
+            "title": "Returns URLs pointing to images of this vehicles paint.  These images are available in resolution 800x600 px.  Note there might be two paints (e.g. Smart, 'paint' for body panel and 'paint2' for the tridion cell)",
+            "description": "Returns URLs pointing to images of this vehicles paint.  These images are available in resolution 800x600 px.  Note there might be two paints (e.g. Smart, 'paint' for body panel and 'paint2' for the tridion cell)",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/imageComponentsPaintGET.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__images_components_paint": {
+            "main": "./lib/actions/x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__ima.js",
+            "title": "x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__images_components_paint",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__ima.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "imageComponentsRimGET": {
+            "main": "./lib/actions/imageComponentsRimGET.js",
+            "title": "Returns a URL pointing to an image of the vehicles rim.  These images are available in the resolution 710x710 px.",
+            "description": "Returns a URL pointing to an image of the vehicles rim.  These images are available in the resolution 710x710 px.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/imageComponentsRimGET.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__images_components_rim": {
+            "main": "./lib/actions/x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__ima.js",
+            "title": "x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__images_components_rim",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__ima.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "imageComponentsTrimGET": {
+            "main": "./lib/actions/imageComponentsTrimGET.js",
+            "title": "Returns a URL pointing to an image of this vehicles trim.  These images are available in resolution 800x600 px.",
+            "description": "Returns a URL pointing to an image of this vehicles trim.  These images are available in resolution 800x600 px.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/imageComponentsTrimGET.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__images_components_trim": {
+            "main": "./lib/actions/x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__ima.js",
+            "title": "x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__images_components_trim",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__ima.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "imageComponentsUpholsteryGET": {
+            "main": "./lib/actions/imageComponentsUpholsteryGET.js",
+            "title": "Returns URLs pointing to images of the vehicle's upholsteries. Tge images are available in the highest possible resolution (usually 800x600 px).",
+            "description": "Returns URLs pointing to images of the vehicle's upholsteries. Tge images are available in the highest possible resolution (usually 800x600 px).",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/imageComponentsUpholsteryGET.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__images_components_upholstery": {
+            "main": "./lib/actions/x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__ima.js",
+            "title": "x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__images_components_upholstery",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__ima.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "imageVehicleGET": {
+            "main": "./lib/actions/imageVehicleGET.js",
+            "title": "Returns URLs pointing to PNG images of a vehicle with a white background.",
+            "description": "Returns URLs pointing to PNG images of a vehicle with a white background.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/imageVehicleGET.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__images_vehicle": {
+            "main": "./lib/actions/x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__ima.js",
+            "title": "x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__images_vehicle",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__ima.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "modelConfigurationSelectablesGET": {
+            "main": "./lib/actions/modelConfigurationSelectablesGET.js",
+            "title": "Get the selectable components for the given marketId, modelId and configurationId.",
+            "description": "Get the selectable `VehicleComponents` and the `ComponentCategories` of the `VehicleConfiguration` for the given **marketId**, **modelId** and **configurationId**. Optional query param **componentType** may be used to filter the result.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/modelConfigurationSelectablesGET.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__selectables": {
+            "main": "./lib/actions/x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__sel.js",
+            "title": "x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__selectables",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_swagger_router_controller_markets__marketId__models__modelId__configurations__configurationId__sel.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "onlineCodePOST": {
+            "main": "./lib/actions/onlineCodePOST.js",
+            "title": "Stores the configuration of the given configurationId and modelId",
+            "description": "Stores the configuration of the given **configurationId** and **modelId**",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/onlineCodePOST.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_swagger_router_controller_markets__marketId__onlinecode": {
+            "main": "./lib/actions/x_swagger_router_controller_markets__marketId__onlinecode.js",
+            "title": "x_swagger_router_controller_markets__marketId__onlinecode",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_swagger_router_controller_markets__marketId__onlinecode.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "onlineCodeGET": {
+            "main": "./lib/actions/onlineCodeGET.js",
+            "title": "Get the configuration of the given onlineCode and marketId.",
+            "description": "Gets the configuration for the given marketId and onlineCode.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/onlineCodeGET.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_swagger_router_controller_markets__marketId__onlinecode__onlineCode_": {
+            "main": "./lib/actions/x_swagger_router_controller_markets__marketId__onlinecode__onlineCode_.js",
+            "title": "x_swagger_router_controller_markets__marketId__onlinecode__onlineCode_",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_swagger_router_controller_markets__marketId__onlinecode__onlineCode_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "productGroupsGET": {
+            "main": "./lib/actions/productGroupsGET.js",
+            "title": "Get all configured active product groups for the given marketId.",
+            "description": "Get all configured active product groups for the given **marketId**.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/productGroupsGET.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_swagger_router_controller_markets__marketId__productgroups": {
+            "main": "./lib/actions/x_swagger_router_controller_markets__marketId__productgroups.js",
+            "title": "x_swagger_router_controller_markets__marketId__productgroups",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_swagger_router_controller_markets__marketId__productgroups.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

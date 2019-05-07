@@ -1,0 +1,33 @@
+{
+    "type": "object",
+    "properties": {
+        "marketId": {
+            "required": true,
+            "type": "string",
+            "pattern": "^[a-z]{2}_[A-Z]{2}$",
+            "default": "de_DE"
+        },
+        "requestBody": {
+            "description": "JSON object containing the modelId and the configurationId",
+            "example": {
+                "configurationId": "E-AB5-D09-D14-D53-D71-D80-L06-L19-M69-M70-M88-M94-N63-O16-O92-Q31-Q56-S09-S16_L-197_P-518_S-08U-09U-11R-12U-14U-160-16U-17U-223-231-233-235-23P-249-266-275-276-290-293-297-299-351-360-401-402-413-427-432-436-439-441-443-448-452-453-463-470-471-475-487-503-518-531-538-540-551-581-582-596-628-642-68U-70B-735-808-810-840-871-874-877-881-882-883-889-897-8U0-902-B59-H29-L2B-P07-P09-P17-P21-P34-P35-P47-P54-P64-R66-SZ4-U10-U12-U25",
+                "modelId": "222980_000"
+            },
+            "properties": {
+                "configurationId": {
+                    "description": "String that identifies a configuration. e.g. E-D15-D18-D41-D46-D49-D52-D53-D54-D59-D60-D71-F32-F36-F88-F98-G03-G05-G36-G56-I61-J67-M23-M70-N18-N25-N62-N92-O76-Q29-Q56-Q79-Q92-S01-S05-S08-S63-S92-T05-T07-T62-T84-T88_I-953_L-696_P-001_S-152-160-161-171-258-290-292-294-411-442-470-472-475-485-516-533-538-560-570-573-580-584-58U-591-620-70B-807-888-B03-B16-B51-K11-L18-R43-U60",
+                    "type": "string"
+                },
+                "modelId": {
+                    "description": "String that identifies a model. e.g. '176042_002'",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "modelId",
+                "configurationId"
+            ],
+            "type": "object"
+        }
+    }
+}

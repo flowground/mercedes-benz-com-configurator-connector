@@ -1,0 +1,23 @@
+{
+    "type": "object",
+    "properties": {
+        "marketId": {
+            "required": true,
+            "type": "string",
+            "pattern": "^[a-z]{2}_[A-Z]{2}$",
+            "default": "de_DE"
+        },
+        "classId": {
+            "required": true,
+            "type": "string",
+            "default": "222"
+        },
+        "fieldsFilter": {
+            "required": false,
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    }
+}
